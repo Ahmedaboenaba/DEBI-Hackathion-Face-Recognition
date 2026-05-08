@@ -13,8 +13,9 @@ import json
 import os
 import face_recognition
 
-DB_PATH = os.environ.get("DB_PATH", "D:\Self_Study\DEBI\DEBI-Hackathion-Face-Recognition\database.json")
-KNOWN_FACES_DIR = "D:\Self_Study\DEBI\DEBI-Hackathion-Face-Recognition\known_faces"
+_PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.environ.get("DB_PATH", os.path.join(_PROJECT_DIR, "database.json"))
+KNOWN_FACES_DIR = os.path.join(_PROJECT_DIR, "known_faces")
 SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png"}
 
 
