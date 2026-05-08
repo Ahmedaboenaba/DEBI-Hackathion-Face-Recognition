@@ -13,8 +13,8 @@ import json
 import os
 import face_recognition
 
-DB_PATH = os.environ.get("DB_PATH", "/kaggle/working/database.json")
-KNOWN_FACES_DIR = "/kaggle/input/datasets/ahmedaboenaba/known-faces/known_faces"
+DB_PATH = os.environ.get("DB_PATH", "D:\Self_Study\DEBI\DEBI-Hackathion-Face-Recognition\database.json")
+KNOWN_FACES_DIR = "D:\Self_Study\DEBI\DEBI-Hackathion-Face-Recognition\known_faces"
 SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png"}
 
 

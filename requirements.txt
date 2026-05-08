@@ -1,3 +1,7 @@
 face_recognition
 opencv-python
 numpy
+streamlit
+streamlit-webrtc
+av
+pytest
