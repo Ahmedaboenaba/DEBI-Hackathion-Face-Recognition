@@ -20,7 +20,7 @@ DB_PATH = os.environ.get(
     "DB_PATH",
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "database.json"),
 )
-TOLERANCE = 0.5
+TOLERANCE = 0.5 
 RESIZE_SCALE = 0.25  # Process frames at 25% resolution for speed
 
 

@@ -5,3 +5,4 @@ streamlit
 streamlit-webrtc
 av
 pytest
+opencv-python-headless
