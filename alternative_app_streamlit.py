@@ -5,7 +5,7 @@ Uses streamlit-webrtc to access the webcam in the browser,
 runs the same recognition logic as main.py on each frame,
 and displays the annotated video feed.
 
-Run with:  streamlit run app.py
+Run with:  python -m streamlit run app.py 
 """
 
 import json

@@ -10,7 +10,7 @@ import cv2
 import face_recognition
 import numpy as np
 
-DB_PATH = os.environ.get("DB_PATH", "/kaggle/working/database.json")
+DB_PATH = os.environ.get("DB_PATH", "database.json") # you have to check if change the path based on you status
 
 
 def load_database(path: str) -> dict:

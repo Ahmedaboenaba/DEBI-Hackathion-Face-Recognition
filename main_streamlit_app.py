@@ -4,7 +4,7 @@ app2.py — Streamlit Face Recognition App (Local Webcam Edition)
 Uses OpenCV VideoCapture directly — no webrtc dependency needed.
 Simple, reliable, works locally out of the box.
 
-Run with:  streamlit run app2.py
+Run with:  python -m streamlit run app2.py
 """
 
 import json
@@ -165,6 +165,10 @@ st.sidebar.info(
     f"**Metric:** L2 Euclidean Distance"
 )
 
+# ── Session state for camera management ────────────────────────────────────
+if "camera_running" not in st.session_state:
+    st.session_state.camera_running = False
+
 # ── Main Layout ────────────────────────────────────────────────────────────
 col_video, col_info = st.columns([3, 1])
 
@@ -175,19 +179,26 @@ with col_info:
     details_placeholder = st.empty()
 
 with col_video:
-    run = st.toggle("🎥 Start Camera", value=False)
+    btn_col1, btn_col2 = st.columns(2)
+    with btn_col1:
+        if st.button("▶️ Start Camera", use_container_width=True):
+            st.session_state.camera_running = True
+    with btn_col2:
+        if st.button("⏹️ Stop Camera", use_container_width=True):
+            st.session_state.camera_running = False
     frame_placeholder = st.empty()
 
 # ── Camera Loop ────────────────────────────────────────────────────────────
-if run:
+if st.session_state.camera_running:
     cap = cv2.VideoCapture(0)
 
     if not cap.isOpened():
         st.error("❌ Cannot open webcam. Check your camera connection.")
+        st.session_state.camera_running = False
     else:
-        st.toast("📷 Camera started!", icon="✅")
+        stop_pressed = st.button("🛑 Stop", key="stop_inline")
 
-        while run:
+        while cap.isOpened():
             ret, frame = cap.read()
             if not ret:
                 st.warning("Failed to read from webcam.")
@@ -204,7 +215,7 @@ if run:
 
             # Convert BGR → RGB for Streamlit display
             rgb = cv2.cvtColor(annotated, cv2.COLOR_BGR2RGB)
-            frame_placeholder.image(rgb, channels="RGB", use_container_width=True)
+            frame_placeholder.image(rgb, channels="RGB", width="stretch")
 
             # Update live stats
             fps_placeholder.metric("⚡ FPS", f"{fps:.1f}")
@@ -223,4 +234,4 @@ if run:
 
         cap.release()
 else:
-    frame_placeholder.info("👆 Toggle **Start Camera** above to begin.")
+    frame_placeholder.info("👆 Click **Start Camera** above to begin.")
