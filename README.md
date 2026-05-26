@@ -70,7 +70,7 @@ python enroll.py
 **Streamlit app (browser-based):**
 
 ```bash
-python -m streamlit run app.py
+python -m streamlit run main_streamlit_app.py
 ```
 
 **OpenCV desktop version:**
