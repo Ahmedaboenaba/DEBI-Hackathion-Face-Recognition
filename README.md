@@ -124,7 +124,11 @@ python -m pytest tests/ -v
 
 ## 👥 Team
 
-DEBI Hackathon Team
+DEBI Hackathon Team:
+- Ahmed Jaber
+- Ahmed Imad
+- Ahmed Ashraf
+- Ahmed Kamel
 
 ## 📄 License
 
